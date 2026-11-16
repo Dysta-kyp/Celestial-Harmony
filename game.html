@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Center — Celestial Harmony</title>
+    <meta
+      name="description"
+      content="Game Center Guild Celestial Harmony: 100 mini game santai, pelacakan progres, dan papan skor lokal."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="game.css" />
+  </head>
+  <body>
+    <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="../index.html" class="brand-link">
+          <img
+            src="../assets/logo.jpeg"
+            alt="Logo Celestial Harmony"
+            class="brand-logo"
+          />
+          <span class="brand-title">Celestial Harmony</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Navigasi Utama">
+          <a href="../index.html" class="nav-link">Beranda</a>
+          <a href="../sejarah/sejarah.html" class="nav-link">Sejarah</a>
+          <a href="game.html" class="nav-link active" aria-current="page">Game Center</a>
+        </nav>
+
+        <a href="../sejarah/sejarah.html" class="cta-header">Baca Novel</a>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="gc-container">
+        <header class="gc-header">
+          <h1>Game Center</h1>
+          <p>
+            100 mini game santai: 50 Sangat Mudah (1 poin) dan 50 Mudah (2 poin). Selesaikan
+            tantangan untuk mengisi Papan Skor Guild.
+          </p>
+        </header>
+
+        <!-- Identitas Petualang & Papan Skor Guild -->
+        <section class="gc-top-grid" aria-label="Profil dan Papan Skor">
+          <div class="panel-card gc-profile-panel">
+            <h2>👤 Identitas Petualang</h2>
+            <form id="player-form" class="player-form">
+              <input
+                id="player-input"
+                type="text"
+                maxlength="24"
+                placeholder="Nama kamu di guild..."
+                aria-label="Nama kamu di guild"
+              />
+              <button type="submit" class="btn-gold btn-sm">Simpan</button>
+            </form>
+            <p id="player-notice" class="player-notice"></p>
+
+            <div class="gc-stats">
+              <div>
+                <span class="stat-label">Game Selesai</span>
+                <strong id="stat-completed" class="stat-value">0 / 100</strong>
+              </div>
+              <div>
+                <span class="stat-label">Poin Kamu</span>
+                <strong id="stat-points" class="stat-value gold">0 Poin</strong>
+              </div>
+            </div>
+
+            <div class="progress-track" aria-hidden="true">
+              <div id="progress-fill" class="progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="panel-card gc-lb-panel">
+            <div class="lb-head">
+              <h2>🏆 Papan Skor Guild</h2>
+              <span class="lb-sub">Tersimpan di browser (offline-ready)</span>
+            </div>
+            <div id="leaderboard-list" class="lb-list"></div>
+          </div>
+        </section>
+
+        <!-- Toolbar Filter & Pencarian -->
+        <section class="gc-toolbar" aria-label="Filter Mini Game">
+          <div class="seg-tabs" role="tablist" aria-label="Filter Tingkat Kesulitan">
+            <button type="button" class="seg-btn active" data-diff="all">Semua (100)</button>
+            <button type="button" class="seg-btn" data-diff="very-easy">Sangat Mudah (50)</button>
+            <button type="button" class="seg-btn" data-diff="easy">Mudah (50)</button>
+          </div>
+
+          <div class="filter-inputs">
+            <select id="family-filter" aria-label="Filter tipe permainan">
+              <option value="all">Semua Tipe Permainan</option>
+            </select>
+
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Cari nomor atau nama..."
+              aria-label="Cari mini game"
+            />
+
+            <button id="btn-random-game" type="button" class="btn-outline btn-sm">
+              🎲 Game Acak
+            </button>
+          </div>
+        </section>
+
+        <!-- Grid 100 Mini Game -->
+        <section id="games-grid" class="games-grid" aria-label="Daftar 100 Mini Game"></section>
+      </div>
+    </main>
+
+    <!-- Modal Mini Game -->
+    <div
+      id="game-modal"
+      class="modal-backdrop hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div class="modal-card">
+        <div class="modal-head">
+          <div>
+            <h3 id="modal-title">Mini Game</h3>
+            <p id="modal-meta"></p>
+          </div>
+          <button id="modal-close" type="button" class="modal-close-btn" aria-label="Tutup permainan">
+            ✕
+          </button>
+        </div>
+        <div id="modal-body" class="modal-body"></div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>© Celestial Harmony · Ascendant Realms · Toram Online</span>
+        <div class="footer-links">
+          <a href="../index.html">Beranda</a>
+          <a href="../sejarah/sejarah.html">Sejarah</a>
+          <a href="game.html">Game Center</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="game.js"></script>
+  </body>
+</html>

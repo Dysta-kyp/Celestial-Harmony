@@ -1,0 +1,884 @@
+:root {
+  --bg-deep: #060917;
+  --bg-surface: #101634;
+  --bg-surface-2: #161f4d;
+  --bg-inset: #0a0e24;
+  --gold: #d4af6a;
+  --gold-soft: #ebd094;
+  --indigo: #5b7bff;
+  --border: #27326c;
+  --border-strong: #3c4a9e;
+  --text-main: #e6eaf8;
+  --text-muted: #c9d3ee;
+  --text-dim: #9aa5c9;
+  --emerald: #34d399;
+  --rose: #fb7185;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: "Lora", Georgia, serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(42, 58, 138, 0.45), transparent 70%),
+    radial-gradient(circle at 85% 20%, rgba(212, 175, 106, 0.08), transparent 45%),
+    var(--bg-deep) fixed;
+  color: var(--text-main);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Cinzel", Georgia, serif;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Starfield Canvas */
+#starfield-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -10;
+}
+
+/* Top Bar Navigation (3 Zones) */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--border);
+  background: rgba(6, 9, 23, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.header-inner {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(212, 175, 106, 0.7);
+}
+
+.brand-title {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-link {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.nav-link.active {
+  background: #17204d;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.cta-header {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: var(--gold);
+  color: #070a18;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.cta-header:hover {
+  background: #e5c484;
+  transform: translateY(-1px);
+}
+
+/* Main Container */
+.page-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 36px 20px 80px;
+  animation: pageFadeIn 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Shared Buttons & Divider */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  background: var(--gold);
+  color: #070a18;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-gold:hover {
+  background: #e5c484;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(212, 175, 106, 0.22);
+}
+
+.btn-gold:active {
+  transform: scale(0.98);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 175, 106, 0.6);
+  background: rgba(16, 22, 52, 0.65);
+  color: var(--gold);
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  background: rgba(212, 175, 106, 0.1);
+  transform: translateY(-1px);
+}
+
+.celestial-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 64px 0;
+  color: rgba(212, 175, 106, 0.65);
+  font-size: 14px;
+}
+
+.celestial-divider::before,
+.celestial-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* Hero Section (Page 1) */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 44px;
+  padding-top: 12px;
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-size: clamp(2.25rem, 4.4vw, 3.75rem);
+  line-height: 1.12;
+  text-shadow: 0 0 32px rgba(212, 175, 106, 0.22);
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  max-width: 58ch;
+  font-size: 17px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-emblem-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.emblem-glow {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(91, 123, 255, 0.24), transparent 70%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.astrolabe-ring {
+  position: absolute;
+  width: 356px;
+  height: 356px;
+  border-radius: 50%;
+  border: 1px dashed rgba(212, 175, 106, 0.35);
+  animation: slowSpin 42s linear infinite;
+  pointer-events: none;
+}
+
+.astrolabe-inner {
+  position: absolute;
+  width: 324px;
+  height: 324px;
+  border-radius: 50%;
+  border: 1px dotted rgba(91, 123, 255, 0.36);
+  animation: slowSpin 60s linear infinite reverse;
+  pointer-events: none;
+}
+
+.emblem-circle {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(212, 175, 106, 0.78);
+  background: var(--bg-surface);
+  box-shadow: 0 0 60px rgba(91, 123, 255, 0.3);
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.emblem-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Section Headers */
+.section-head {
+  margin-bottom: 20px;
+}
+
+.section-head.center {
+  text-align: center;
+}
+
+.section-head h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  margin-bottom: 6px;
+}
+
+.section-head p {
+  font-size: 14px;
+  color: var(--text-dim);
+  max-width: 640px;
+}
+
+.section-head.center p {
+  margin: 0 auto;
+}
+
+/* Profil Pemimpin + Silsilah Guild */
+.lineage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.panel-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.profile-card {
+  min-height: 232px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.profile-card.switching {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.profile-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.profile-crest {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 106, 0.7);
+  background: linear-gradient(135deg, #1d2760, #0d1230);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+  box-shadow: 0 0 24px rgba(212, 175, 106, 0.14);
+}
+
+.profile-name {
+  font-size: 21px;
+  margin-bottom: 4px;
+}
+
+.profile-role {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.profile-bio {
+  font-size: 14px;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.profile-meta {
+  border-top: 1px solid #1e2859;
+  padding-top: 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.profile-meta strong {
+  color: var(--gold-soft);
+}
+
+.silsilah-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tree-node {
+  border: 1px solid #2d3a7c;
+  background: #141b40;
+  color: var(--text-main);
+  border-radius: 12px;
+  padding: 14px 18px;
+  text-align: center;
+  transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease, box-shadow 0.2s ease;
+}
+
+.tree-node:hover {
+  border-color: rgba(212, 175, 106, 0.65);
+  transform: translateY(-2px);
+}
+
+.tree-node.active {
+  border-color: var(--gold);
+  background: #192358;
+  box-shadow: 0 0 26px rgba(212, 175, 106, 0.2);
+}
+
+.tree-node.leader {
+  min-width: 210px;
+}
+
+.tree-node-name {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.tree-node.vice .tree-node-name {
+  color: var(--text-main);
+}
+
+.tree-node.active .tree-node-name {
+  color: var(--gold);
+}
+
+.tree-node-role {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.silsilah-svg {
+  width: 100%;
+  height: 44px;
+  display: block;
+}
+
+.tree-branch {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 720px) {
+  .silsilah-svg {
+    display: none;
+  }
+  .tree-branch {
+    border-top: 1px solid var(--border-strong);
+    padding-top: 18px;
+  }
+}
+
+/* Cara Kerja Guild & 18 Divisi */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.step-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.step-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.step-card h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.step-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.workflow-diagram {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.command-pair {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.command-box {
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface-2);
+  border-radius: 10px;
+  padding: 8px 18px;
+  text-align: center;
+}
+
+.command-box.primary {
+  border-color: rgba(212, 175, 106, 0.7);
+}
+
+.command-box strong {
+  display: block;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  color: var(--gold);
+}
+
+.command-box span {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.workflow-stem {
+  width: 1px;
+  height: 22px;
+  background: var(--border-strong);
+  margin: 0 auto;
+}
+
+.recruiter-wrap {
+  border-top: 1px solid var(--border-strong);
+  padding-top: 18px;
+}
+
+.recruiter-hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+.recruiter-grid {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.recruiter-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--border);
+  background: #0b1028;
+  color: var(--text-main);
+  border-radius: 12px;
+  padding: 11px 6px;
+  transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease, box-shadow 0.18s ease;
+}
+
+.recruiter-btn:hover {
+  border-color: rgba(212, 175, 106, 0.65);
+  transform: translateY(-2px);
+}
+
+.recruiter-btn.active {
+  border-color: var(--gold);
+  background: #1b255b;
+  box-shadow: 0 0 18px rgba(212, 175, 106, 0.18);
+  transform: translateY(-2px);
+}
+
+.recruiter-trumpet {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.recruiter-label {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.recruiter-status {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.division-detail {
+  max-width: 780px;
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid #2f3b85;
+  background: var(--bg-inset);
+  padding: 20px;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.division-detail.switching {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.division-detail-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid #1e2859;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+}
+
+.division-detail-head h3 {
+  font-size: 16px;
+}
+
+.division-captain {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.division-members {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.member-slot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid #232d63;
+  background: var(--bg-surface);
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #8995ba;
+}
+
+.member-slot.filled {
+  border-color: rgba(212, 175, 106, 0.65);
+  background: #151e49;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Portal Cards to Page 2 & Page 3 */
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.portal-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.portal-card:hover {
+  border-color: rgba(212, 175, 106, 0.7);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.portal-card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.portal-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.portal-arrow {
+  font-size: 22px;
+  color: var(--gold);
+  transition: transform 0.2s ease;
+}
+
+.portal-card:hover .portal-arrow {
+  transform: translateX(4px);
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid #252f66;
+  padding: 22px 20px;
+}
+
+.footer-inner {
+  max-width: 1152px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+/* Animations */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes slowSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero-grid,
+  .lineage-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-emblem-wrap {
+    order: -1;
+  }
+  .hero-content {
+    text-align: center;
+  }
+  .hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .recruiter-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .cta-header {
+    display: none;
+  }
+  .steps-grid,
+  .tree-branch,
+  .division-members,
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+  .recruiter-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .emblem-circle {
+    width: 240px;
+    height: 240px;
+  }
+  .astrolabe-ring {
+    width: 280px;
+    height: 280px;
+  }
+  .astrolabe-inner {
+    width: 256px;
+    height: 256px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .emblem-circle,
+  .astrolabe-ring,
+  .page-main {
+    animation: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}

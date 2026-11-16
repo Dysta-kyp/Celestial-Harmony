@@ -1,0 +1,362 @@
+.novel-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.novel-header {
+  text-align: center;
+}
+
+.novel-header h1 {
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  margin-bottom: 8px;
+}
+
+.novel-header p {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+/* 5 Chapter Cards Row (Matches Page 2 Sketch) */
+.chapter-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.chapter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-main);
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chapter-card:hover {
+  border-color: rgba(212, 175, 106, 0.65);
+  transform: translateY(-2px);
+}
+
+.chapter-card.active {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, #1a2459, #101634);
+  box-shadow: 0 0 26px rgba(212, 175, 106, 0.2);
+  transform: translateY(-4px);
+}
+
+.chapter-roman {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.chapter-symbol {
+  font-size: 26px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.chapter-card:hover .chapter-symbol {
+  transform: scale(1.12);
+}
+
+.chapter-short {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.chapter-card.active .chapter-short {
+  color: var(--gold);
+}
+
+/* Novel Tome Reader */
+.novel-tome {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid #2f3b85;
+  background: linear-gradient(180deg, #11183b, #0c1129);
+  padding: 36px 40px;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.45);
+}
+
+.tome-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #1e2859;
+}
+
+.tome-progress-fill {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, var(--indigo), var(--gold));
+  transition: width 0.3s ease;
+}
+
+.tome-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  border-color: rgba(212, 175, 106, 0.42);
+  border-style: solid;
+  border-width: 0;
+}
+
+.tome-corner.tl { top: 12px; left: 12px; border-top-width: 1px; border-left-width: 1px; }
+.tome-corner.tr { top: 12px; right: 12px; border-top-width: 1px; border-right-width: 1px; }
+.tome-corner.bl { bottom: 12px; left: 12px; border-bottom-width: 1px; border-left-width: 1px; }
+.tome-corner.br { bottom: 12px; right: 12px; border-bottom-width: 1px; border-right-width: 1px; }
+
+.tome-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid #1e2859;
+  padding-bottom: 14px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.tome-stage {
+  max-width: 66ch;
+  margin: 0 auto;
+  padding: 34px 0;
+  min-height: 260px;
+  transition: opacity 0.2s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tome-stage.turning-next {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.tome-stage.turning-prev {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.chapter-head {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.chapter-head h2 {
+  font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+  margin-bottom: 6px;
+}
+
+.chapter-head p {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-dim);
+}
+
+.chapter-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-main);
+}
+
+.chapter-body p.dropcap::first-letter {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 2.35em;
+  line-height: 1;
+  float: left;
+  padding-right: 10px;
+  color: var(--gold);
+}
+
+.chapter-body p.indented {
+  text-indent: 1.5rem;
+}
+
+.tome-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid #1e2859;
+  padding-top: 22px;
+}
+
+.tome-progress {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* Pilihan Musik Panel */
+.music-panel {
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.music-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.music-head h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.music-status {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.music-eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 24px;
+}
+
+.music-eq span {
+  width: 4px;
+  height: 24px;
+  border-radius: 99px;
+  background: #2f3b85;
+  transform: scaleY(0.22);
+  transform-origin: bottom;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.music-eq.playing span {
+  background: var(--gold);
+  animation: eqPulse 0.9s ease-in-out infinite;
+}
+
+.music-eq.playing span:nth-child(2) { animation-duration: 0.72s; animation-delay: 0.1s; }
+.music-eq.playing span:nth-child(3) { animation-duration: 0.98s; animation-delay: 0.2s; }
+.music-eq.playing span:nth-child(4) { animation-duration: 0.66s; animation-delay: 0.05s; }
+.music-eq.playing span:nth-child(5) { animation-duration: 0.85s; animation-delay: 0.25s; }
+.music-eq.playing span:nth-child(6) { animation-duration: 0.76s; animation-delay: 0.15s; }
+.music-eq.playing span:nth-child(7) { animation-duration: 0.92s; animation-delay: 0.3s; }
+.music-eq.playing span:nth-child(8) { animation-duration: 0.68s; animation-delay: 0.12s; }
+
+@keyframes eqPulse {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(0.95); }
+}
+
+.volume-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.volume-label input {
+  width: 96px;
+  accent-color: var(--gold);
+}
+
+.music-tracks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.track-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #2f3b85;
+  background: #0b0f26;
+  color: var(--text-main);
+  text-align: left;
+  transition: border-color 0.16s ease, background-color 0.16s ease, transform 0.16s ease, box-shadow 0.2s ease;
+}
+
+.track-btn:hover {
+  border-color: rgba(212, 175, 106, 0.65);
+  transform: translateY(-1px);
+}
+
+.track-btn.active {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: #070a18;
+  box-shadow: 0 0 24px rgba(212, 175, 106, 0.25);
+}
+
+.track-info {
+  min-width: 0;
+}
+
+.track-title {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.track-sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-btn.active .track-sub {
+  color: rgba(7, 10, 24, 0.78);
+}
+
+@media (max-width: 780px) {
+  .chapter-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .novel-tome {
+    padding: 24px 20px;
+  }
+  .music-tracks {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-eq.playing span {
+    animation: none;
+    transform: scaleY(0.75);
+  }
+}

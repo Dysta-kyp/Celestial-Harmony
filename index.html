@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celestial Harmony — Ascendant Realms</title>
+    <meta
+      name="description"
+      content="Portal Guild Toram Online Celestial Harmony – Ascendant Realms: Silsilah Guild, 18 Divisi Tukang Rekrut, Novel Sejarah, dan Game Center."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="brand-link">
+          <img
+            src="logo.jpeg"
+            alt="Logo Celestial Harmony"
+            class="brand-logo"
+          />
+          <span class="brand-title">Celestial Harmony</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Navigasi Utama">
+          <a href="index.html" class="nav-link active" aria-current="page">Beranda</a>
+          <a href="sejarah/sejarah.html" class="nav-link">Sejarah</a>
+          <a href="game/game.html" class="nav-link">Game Center</a>
+        </nav>
+
+        <a href="sejarah/sejarah.html" class="cta-header">Baca Novel</a>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <!-- Hero Section -->
+      <section class="hero-grid">
+        <div class="hero-content">
+          <p class="hero-eyebrow">Ascendant Realms · Toram Online</p>
+          <h1 class="hero-title">Celestial Harmony</h1>
+          <p class="hero-desc">
+            Guild Ascendant Realms di dunia Toram Online. Tempat para petualang bersatu,
+            saling menjaga, dan melangkah bersama di bawah cahaya bintang serta naga perak.
+          </p>
+          <div class="hero-actions">
+            <a href="sejarah.html" class="btn-gold">📖 Baca Sejarah</a>
+            <a href="game.html" class="btn-outline">🎮 Masuk Game Center</a>
+          </div>
+        </div>
+
+        <div class="hero-emblem-wrap">
+          <div class="emblem-glow" aria-hidden="true"></div>
+          <div class="astrolabe-ring" aria-hidden="true"></div>
+          <div class="astrolabe-inner" aria-hidden="true"></div>
+          <div class="emblem-circle">
+            <img
+              src="assets/logo.jpeg"
+              alt="Lambang Naga Perak Celestial Harmony Ascendant Realms"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div class="celestial-divider" aria-hidden="true">✦</div>
+
+      <!-- Profil Pemimpin & Silsilah Guild -->
+      <section class="lineage-grid" aria-label="Profil dan Silsilah Guild">
+        <div>
+          <div class="section-head">
+            <h2>Profil Pemimpin</h2>
+            <p>Klik tokoh di silsilah untuk melihat detail jabatan dan perannya</p>
+          </div>
+
+          <article id="profile-card" class="panel-card profile-card" aria-live="polite">
+            <div class="profile-top">
+              <div id="profile-crest" class="profile-crest" aria-hidden="true">👑</div>
+              <div>
+                <h3 id="profile-name" class="profile-name">Kurozawa</h3>
+                <div id="profile-role" class="profile-role">
+                  Ketua Guild · Pemimpin Tertinggi Ascendant Realms
+                </div>
+              </div>
+            </div>
+            <p id="profile-bio" class="profile-bio">
+              Pendiri sekaligus pemegang arah langkah Celestial Harmony. Memastikan tidak ada satu
+              pun petualang yang bertarung sendirian di dunia Toram Online.
+            </p>
+            <div class="profile-meta">
+              <div>
+                Peran Utama:
+                <strong id="profile-specialty">Strategi Guild &amp; Penjaga Bintang Pertama</strong>
+              </div>
+              <div style="margin-top: 6px;">
+                Koordinasi:
+                <span id="profile-coordination" style="font-family: 'JetBrains Mono', monospace; color: #c9d3ee;">
+                  Seluruh 18 Divisi Guild
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div>
+          <div class="section-head">
+            <h2>Silsilah Guild</h2>
+            <p>Dari Ketua Guild hingga para Wakil / Kapten Divisi</p>
+          </div>
+
+          <div class="panel-card">
+            <div class="silsilah-tree">
+              <button
+                type="button"
+                class="tree-node leader active"
+                data-profile-id="kurozawa"
+              >
+                <div class="tree-node-name">Kurozawa</div>
+                <div class="tree-node-role">Ketua Guild</div>
+              </button>
+
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 600 44"
+                class="silsilah-svg"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M 300 0 L 300 22 M 100 22 L 500 22 M 100 22 L 100 44 M 300 22 L 300 44 M 500 22 L 500 44"
+                  fill="none"
+                  stroke="#3c4a9e"
+                  stroke-width="1.6"
+                />
+                <path
+                  id="silsilah-active-branch"
+                  d=""
+                  fill="none"
+                  stroke="#d4af6a"
+                  stroke-width="2.4"
+                />
+              </svg>
+
+              <div class="tree-branch">
+                <button type="button" class="tree-node vice" data-profile-id="katsuo">
+                  <div class="tree-node-name">Katsuo</div>
+                  <div class="tree-node-role">Kapten Divisi</div>
+                </button>
+                <button type="button" class="tree-node vice" data-profile-id="ferisn">
+                  <div class="tree-node-name">belum ada</div>
+                  <div class="tree-node-role">Kapten Divisi</div>
+                </button>
+                <button type="button" class="tree-node vice" data-profile-id="rey">
+                  <div class="tree-node-name">Rey</div>
+                  <div class="tree-node-role">Kapten Divisi</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="celestial-divider" aria-hidden="true">✦</div>
+
+      <!-- Cara Kerja Guild & 18 Divisi Tukang Rekrut -->
+      <section aria-label="Cara Kerja Guild dan 18 Divisi">
+        <div class="section-head center">
+          <h2>Cara Kerja Guild &amp; 18 Divisi</h2>
+          <p>
+            Ketua dan Wakil mengarahkan seluruh Tukang Rekrut berlogo terompet, dan masing-masing
+            Tukang Rekrut memimpin 3 anggota dalam satu divisi
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <h3>01. Ketua &amp; Wakil Memberi Arah</h3>
+            <p>
+              Ketua (Kurozawa) bersama para Wakil menetapkan visi, agenda ekspedisi, serta arah
+              perkembangan seluruh guild.
+            </p>
+          </div>
+          <div class="step-card">
+            <h3>02. Terompet Tukang Rekrut</h3>
+            <p>
+              Setiap Tukang Rekrut meniup terompet untuk menyambut petualang baru dan menyatukan
+              mereka ke dalam barisan.
+            </p>
+          </div>
+          <div class="step-card">
+            <h3>03. Satu Rekrut, Tiga Anggota</h3>
+            <p>
+              Masing-masing Tukang Rekrut membina tepat tiga anggota—itulah unit inti yang disebut
+              satu Divisi.
+            </p>
+          </div>
+        </div>
+
+        <div class="workflow-diagram">
+          <div class="command-pair">
+            <div class="command-box primary">
+              <strong>Ketua</strong>
+              <span>Kurozawa</span>
+            </div>
+            <div class="command-box">
+              <strong>Wakil</strong>
+              <span>Belum terisi</span>
+            </div>
+          </div>
+
+          <div class="workflow-stem" aria-hidden="true"></div>
+
+          <div class="recruiter-wrap">
+            <p class="recruiter-hint">
+              Klik salah satu dari 18 kotak <strong>Tukang Rekrut</strong> di bawah untuk melihat 3
+              anggota divisinya
+            </p>
+            <div id="recruiter-grid" class="recruiter-grid"></div>
+          </div>
+
+          <div id="division-detail" class="division-detail" aria-live="polite">
+            <div class="division-detail-head">
+              <h3 id="division-title">🎺 Divisi 1 · Tukang Rekrut</h3>
+              <span class="division-captain">
+                Di bawah koordinasi Kapten <strong id="division-captain">belum ada</strong>
+              </span>
+            </div>
+            <div id="division-members" class="division-members"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="celestial-divider" aria-hidden="true">✦</div>
+
+      <!-- Portal Menghubungkan ke 2 Halaman Lain -->
+      <section aria-label="Tautan Halaman Lain">
+        <div class="portal-grid">
+          <a href="sejarah/sejarah.html" class="portal-card">
+            <div>
+              <h3>📖 Halaman 2 · Sejarah Guild</h3>
+              <p>
+                Baca kisah berdirinya Celestial Harmony dalam format novel 5 bab disertai pilihan
+                musik latar fantasi.
+              </p>
+            </div>
+            <span class="portal-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a href="game/game.html" class="portal-card">
+            <div>
+              <h3>🎮 Halaman 3 · Game Center</h3>
+              <p>
+                Mainkan 100 mini game santai, kumpulkan poin guild, dan raih peringkat teratas di
+                papan skor.
+              </p>
+            </div>
+            <span class="portal-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>© Celestial Harmony · Ascendant Realms · Toram Online</span>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="sejarah/sejarah.html">Sejarah</a>
+          <a href="game/game.html">Game Center</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
