@@ -8,7 +8,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
   Jangan pernah memasukkan service_role / secret key ke file browser.
 */
 const SUPABASE_URL = "https://peoziujseikpbmkfcczh.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "PASTE_SUPABASE_PUBLISHABLE_KEY";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_IipjzajibrNSrxNRalYr9g_9AEfGzNK";
 
 const form = document.querySelector("#auth-form");
 const nameField = document.querySelector("#name-field");
