@@ -7,7 +7,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
   3. Isi URL dan publishable key di bawah.
   Jangan pernah memasukkan service_role / secret key ke file browser.
 */
-const SUPABASE_URL = "PASTE_SUPABASE_PROJECT_URL";
+const SUPABASE_URL = "https://peoziujseikpbmkfcczh.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "PASTE_SUPABASE_PUBLISHABLE_KEY";
 
 const form = document.querySelector("#auth-form");
