@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d1c">
+  <title>Login Anggota — Celestial Harmony</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-card" aria-labelledby="page-title">
+      <a class="brand" href="index.html" aria-label="Kembali ke Celestial Harmony">
+        <span class="brand-mark">✦</span>
+        <span>CELESTIAL <b>HARMONY</b></span>
+      </a>
+
+      <div class="intro">
+        <p class="eyebrow">MEMBER AREA</p>
+        <h1 id="page-title">Selamat datang</h1>
+        <p class="muted">Masuk ke akun guild kamu atau buat akun anggota baru.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Pilih akses">
+        <button class="tab active" id="login-tab" type="button" role="tab" aria-selected="true">Login</button>
+        <button class="tab" id="signup-tab" type="button" role="tab" aria-selected="false">Daftar</button>
+      </div>
+
+      <form id="auth-form" novalidate>
+        <div class="field" id="name-field" hidden>
+          <label for="display-name">Nama anggota</label>
+          <input id="display-name" name="displayName" type="text" maxlength="40"
+                 autocomplete="nickname" placeholder="Nama yang tampil di guild">
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email"
+                 placeholder="nama@email.com" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password"
+                 autocomplete="current-password" minlength="8"
+                 placeholder="Minimal 8 karakter" required>
+        </div>
+
+        <button class="primary-btn" id="submit-btn" type="submit">Masuk</button>
+      </form>
+
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+
+      <div class="separator"><span>ATAU</span></div>
+      <button class="guest-btn" id="guest-btn" type="button">Lanjut sebagai tamu</button>
+
+      <p class="fine-print">Dengan melanjutkan, kamu menyetujui aturan dan ketentuan guild.</p>
+      <a class="back-link" href="index.html">← Kembali ke halaman utama</a>
+    </section>
+    <footer>© <span id="year"></span> Celestial Harmony</footer>
+  </main>
+  <script type="module" src="login.js"></script>
+</body>
+</html>
